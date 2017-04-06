@@ -12,9 +12,9 @@ crimeline = crimeline.map(lambda x: ('NotNaN',1) if x[0] != None else ('NaN',1))
 
 
 
-‘’‘
+'''
 Count null value in each column
-’‘’
+'''
 crime_df = sqlContext.read.csv("/Users/guozhiqi-seven/Google Drive/NYU Master/Big Data/project/NYPD_Complaint_Data_Historic.csv",header=True)
 from pyspark.sql.functions import col, count, sum
 
