@@ -191,3 +191,207 @@ header = crimedata.first() #header
 KY_CD=crimedata.filter(lambda line: line != header)
 KY_CD = KY_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[6],KY_CD_Label(x[6])))
 KY_CD.saveAsTextFile("output.out")
+
+
+
+'''
+OFNS_DESC_label
+'''
+def OFNS_DESC_label(text):
+	validity = None 
+	base_type = 'TEXT'
+	semantic_type = 'Description of Offense'
+
+	if len(text) == 0 or text == "":
+		validity = 'Null' 
+		base_type = 'Null'
+		semantic_type = 'Null'
+		return (base_type,semantic_type,validity)
+
+	else:
+		validity = 'Valid' 
+		base_type = 'TEXT'
+		semantic_type = 'Description of Offense'
+		return (base_type,semantic_type,validity)
+
+
+header = crimedata.first() #header
+OFNS_DESC=crimedata.filter(lambda line: line != header)
+OFNS_DESC = OFNS_DESC.mapPartitions(lambda x: reader(x)).map(lambda x: (x[7],OFNS_DESC_label(x[7])))
+OFNS_DESC.saveAsTextFile("output.out")
+
+
+
+'''
+PD_CD_Label
+'''
+def PD_CD_Label(code):
+	validity = None 
+	base_type = 'INT'
+	semantic_type = 'Internal Classification Code'
+
+	if code == "":
+		validity = 'Null'
+		base_type = 'Null'
+		semantic_type = 'Null'
+		return (base_type,semantic_type,validity)
+
+	else:
+		code = int(code)
+		if code not in range(1000):
+			validity = 'Invalid'
+			base_type = 'INT'
+			semantic_type = 'Offense Classification Code'
+			return (base_type,semantic_type,validity)
+		else:
+			validity = 'Valid'
+			return (base_type,semantic_type,validity)
+	
+
+header = crimedata.first() #header
+PD_CD=crimedata.filter(lambda line: line != header)
+PD_CD = PD_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[8],PD_CD_Label(x[8])))
+PD_CD.saveAsTextFile("output.out")
+
+
+'''
+PD_DESC_label
+'''
+def PD_DESC_label(text):
+	validity = None 
+	base_type = 'TEXT'
+	semantic_type = 'Description of Internal Classification'
+
+	if len(text) == 0 or text == "":
+		validity = 'Null' 
+		base_type = 'Null'
+		semantic_type = 'Null'
+		return (base_type,semantic_type,validity)
+
+	else:
+		validity = 'Valid' 
+		base_type = 'TEXT'
+		semantic_type = 'Description of Offense'
+		return (base_type,semantic_type,validity)
+
+
+header = crimedata.first() #header
+PD_DESC = crimedata.filter(lambda line: line != header)
+PD_DESC = PD_DESC.mapPartitions(lambda x: reader(x)).map(lambda x: (x[9],PD_DESC_label(x[9])))
+PD_DESC.saveAsTextFile("output.out")
+
+
+
+'''
+CRM_ATPT_CPTD_CD_label
+'''
+def CRM_ATPT_CPTD_CD_label(indicator):
+	validity = None 
+	base_type = 'TEXT'
+	semantic_type = 'Indicator of completeness' 
+
+	indicator_type = ['COMPLETED','ATTEMPTED']
+
+	if indicator == "" or len(indicator) == 0:
+		validity = 'Null' 
+		base_type = 'Null'
+		semantic_type = 'Null'
+		return (base_type,semantic_type,validity)
+
+	elif indicator in indicator_type:
+		validity = 'Valid'
+		return (base_type,semantic_type,validity)
+
+	else:
+		validity = 'Invalid'
+		return (base_type,semantic_type,validity)
+
+header = crimedata.first() #header
+CRM_ATPT_CPTD_CD = crimedata.filter(lambda line: line != header)
+CRM_ATPT_CPTD_CD = CRM_ATPT_CPTD_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[10],CRM_ATPT_CPTD_CD_label(x[10])))
+CRM_ATPT_CPTD_CD.saveAsTextFile("output.out")
+
+
+'''
+LAW_CAT_CD_label
+'''
+def LAW_CAT_CD_label(level):
+	validity = None 
+	base_type = 'TEXT'
+	semantic_type = 'Level of Offense' 
+	level_of_offense = ['FELONY', 'MISDEMEANOR', 'VIOLATION']
+
+	if level == "" or len(level) == 0:
+		validity = 'Null' 
+		base_type = 'Null'
+		semantic_type = 'Null'
+		return (base_type,semantic_type,validity)
+	elif level not in level_of_offense:
+		validity = 'Invalid'
+		return (base_type,semantic_type,validity)
+	else:
+		validity = 'Valid'
+		return (base_type,semantic_type,validity)
+
+header = crimedata.first() #header
+LAW_CAT_CD = crimedata.filter(lambda line: line != header)
+LAW_CAT_CD = LAW_CAT_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[11],LAW_CAT_CD_label(x[11])))
+LAW_CAT_CD.saveAsTextFile("output.out")
+
+
+'''
+JURIS_DESC_label
+'''
+def JURIS_DESC_label(descript):
+	validity = None 
+	base_type = 'TEXT'
+	semantic_type = 'Jurisdiction for Incident'
+
+	if len(descript) == 0 or descript == "":
+		validity = 'Null' 
+		base_type = 'Null'
+		semantic_type = 'Null'
+		return (base_type,semantic_type,validity)
+	else:
+		validity = 'Valid'
+		return (base_type,semantic_type,validity)
+
+header = crimedata.first() #header
+JURIS_DESC = crimedata.filter(lambda line: line != header)
+JURIS_DESC = JURIS_DESC.mapPartitions(lambda x: reader(x)).map(lambda x: (x[12],JURIS_DESC_label(x[12])))
+JURIS_DESC.saveAsTextFile("output.out")
+
+
+'''
+BORO_NM_label
+'''
+def BORO_NM_label(borough,precinct):
+	
+	boro_precinct = {'BRONX':list(range(40,51))+[52], 'QUEENS':list(range(100,116)), \
+	'MANHATTAN':[1,5,6,7,9,10,13,17,18,19,20,22,23,24,25,26,28,30,32,33,34],\
+	'BROOKLYN':[60,61,62,63,66,67,68,69,70,71,72,73,75,76,77,78,79,81,83,84,88,90,94],\
+	'STATEN ISLAND':list(range(120,124))}
+
+	validity = None 
+	base_type = 'TEXT'
+	semantic_type = 'Borough Where Incident Occurred'
+	if precinct != "":
+		precinct = int(precinct) 
+
+	if borough == "" or len(borough) == 0:
+		validity = 'Null' 
+		base_type = 'Null'
+		semantic_type = 'Null'
+		return (base_type,semantic_type,validity)
+
+	elif precinct not in boro_precinct[borough]:
+		validity = 'Invalid'
+		return (base_type,semantic_type,validity)
+	else:
+		validity = 'Valid'
+		return (base_type,semantic_type,validity)
+
+header = crimedata.first() #header
+BORO_NM = crimedata.filter(lambda line: line != header)
+BORO_NM = BORO_NM.mapPartitions(lambda x: reader(x)).map(lambda x: (x[13],BORO_NM_label(x[13],x[14])))
+BORO_NM.saveAsTextFile("output.out")
