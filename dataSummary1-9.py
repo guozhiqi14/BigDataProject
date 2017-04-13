@@ -47,5 +47,19 @@ CMPLNT_FR_DT_date.reduceByKey(add).collect()
 CMPLNT_FR_TM_hour = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[2][:2],1))
 CMPLNT_FR_TM_hour.reduceByKey(add).collect()
 
+CMPLNT_FR_TM_min = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[2][3:5],1))
+CMPLNT_FR_TM_min.reduceByKey(add).collect()
+
+
 offense_classification = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: ((x[6],x[7]),1))
 sorted(offense_classification.reduceByKey(add).collect(),key=lambda x:x[1],reverse=True)
+
+offense_classification = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: ((x[6],x[7]),1))
+sorted(offense_classification.reduceByKey(add).collect(),key=lambda x:x[0][0],reverse=True)
+
+offense_classification = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: ((x[6],x[7]),1))
+sorted(offense_classification.reduceByKey(add).collect(),key=lambda x:x[0][1],reverse=True)
+
+
+
+
