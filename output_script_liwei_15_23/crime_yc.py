@@ -29,7 +29,7 @@ if __name__ == "__main__":
     crime = sc.textFile(sys.argv[1],1)
     header = crime.first() 
     crime=crime.filter(lambda line: line != header)
-    yc = crime.mapPartitions(lambda x: reader(x)).map(lambda x: x[19]).map(lambda x:find_yc(x))
+    yc = crime.mapPartitions(lambda x: reader(x)).map(lambda x: x[20]).map(lambda x:find_yc(x))
     yc_clean=yc.map(lambda x: x[0]+' '+x[1]+' '+x[2]+' '+x[3])
     yc_clean.saveAsTextFile('crime_yc.out')
     sc.stop()

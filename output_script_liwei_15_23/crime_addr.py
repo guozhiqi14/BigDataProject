@@ -5,12 +5,12 @@ from operator import add
 from pyspark import SparkContext
 from csv import reader
 
-def find_xc(x):
+def find_addr(x):
 	if x=='':
-		return (x,'TEXT','X_cordinate','Null')
+		return (x,'TEXT','Address','Null')
 
 	else:
-		return(x,'TEXT','X_cordinate','Valid')
+		return(x,'TEXT','Address','Valid')
            
 
 if __name__ == "__main__":
@@ -20,7 +20,7 @@ if __name__ == "__main__":
 	sc = SparkContext()
 	crime = sc.textFile(sys.argv[1], 1)
 	
-	crime = crime.mapPartitions(lambda x: reader(x)).map(lambda x: x[17]).map(lambda x:find_xc(x))
+	crime = crime.mapPartitions(lambda x: reader(x)).map(lambda x: x[14]).map(lambda x:find_addr(x))
 	a=crime.map(lambda x: x[0]+' '+x[1]+' '+x[2]+' '+x[3])
-	a.saveAsTextFile('crime_park.out')
+	a.saveAsTextFile('crime_addr.out')
 	sc.stop()
