@@ -13,7 +13,7 @@ The dataset used for this project can be downloaded from the NYC Open Data at ht
 #### Column data issue output instruction
 #For outputof column 15-23.   
 To get output of column 15-23 , please open output_script_liwei_15_23.
-
+```python
 ADDR_PCT_CD-crime_addr.py   
 LOC_OF_OCCUR_DESC-crime_loc.py   
 PREM_TYP_DESC-crime_pt.py   
@@ -24,7 +24,7 @@ Y_COORD_CD-crime_yc.py
 Latitude-crime_latitude.py   
 Longitude-crime_long.py    
 Lat_Lon-crime_ll.py   
-
+```
 
 Enter   
 ```python
@@ -77,5 +77,4 @@ To get data column labels(basetype, semantic type and validility) for column 1-1
 spark-submit labelscript.py NYPD_Complaint_Data_Historic.csv 
 hadoop fs -getmerge [column-name]_output.out [column-name]_output.out 
 ```
-
-
+All needed data/output for plotting data summary could be find by running *dataSummary1-9.py *
