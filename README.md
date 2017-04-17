@@ -57,10 +57,10 @@ Open mr_final
 ###For column 16-18:
 PREM_TYP_DESC-crime_16.py output:crime_16.out
 PARKS_NM-crime_17.py output:crime_17.out
-HADEVELOPT-crime_18.py output:crime_18.out
+HADEVELOPT-crime_18.py output:crime_18.out   
 
-To run code:
-spark-submit crime_##.py 
+To run code:   
+spark-submit crime_##.py    
 hadoop fs -getmerge crime_##.out crime_##.out
 
 
