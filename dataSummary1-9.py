@@ -71,7 +71,8 @@ CMPLNT_TO_TM_min = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x
 CMPLNT_TO_TM_min.reduceByKey(add).coalesce(1).saveAsTextFile('CMPLNT_TO_TM_count_by_minute')
 
 RPT_DT_year = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[5][-4:],1))
-RPT_DT_year.reduceByKey(add).coalesce(1).collect() 
+RPT_DT_year.reduceByKey(add).coalesce(1).collect()
+RPT_DT_year.reduceByKey(add).coalesce(1).saveAsTextFile('RPT_DT_count_by_year')
 
 offense_classification = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: ((x[6],x[7]),1))
 offense_classification.reduceByKey(add).coalesce(1).saveAsTextFile('offense_classification')
@@ -84,5 +85,6 @@ offense_classification = crimedata.mapPartitions(lambda x: reader(x)).map(lambda
 sorted(offense_classification.reduceByKey(add).collect(),key=lambda x:x[0][1],reverse=True)
 
 
+def outlier_date_(CMPLNT_FR_DT,CMPLNT_TO_DT):
 
 

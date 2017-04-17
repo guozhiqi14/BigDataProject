@@ -5,6 +5,12 @@ from operator import add
 from datetime import datetime
 import re
 
+
+
+
+crimedata = sc.textFile("/Users/guozhiqi-seven/Google Drive/NYU Master/Big Data/project/NYPD_Complaint_Data_Historic.csv")
+
+
 '''
 CMPLNT_FR_DT_label
 '''
@@ -59,6 +65,7 @@ def CMPLNT_FR_TM_label(time):
 		semantic_type = "Null"
 		return (base_type,semantic_type,validity)
 
+
 CMPLNT_FR_TM = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[2],CMPLNT_FR_DT_label(x[2])))
 CMPLNT_FR_TM.saveAsTextFile("output.out")
 
@@ -90,6 +97,7 @@ def CMPLNT_TO_DT_label(time):
 		base_type = "Null"
 		semantic_type = "Null"
 		return (base_type,semantic_type,validity)
+
 
 CMPLNT_TO_DT = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[3],CMPLNT_TO_DT_label(x[3])))
 CMPLNT_TO_DT.saveAsTextFile("output.out")
