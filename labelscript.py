@@ -6,9 +6,8 @@ from datetime import datetime
 import re
 
 
-
-
-crimedata = sc.textFile("/Users/guozhiqi-seven/Google Drive/NYU Master/Big Data/project/NYPD_Complaint_Data_Historic.csv")
+crimedata = sc.textFile(sys.argv[1], 1)
+#crimedata = sc.textFile("/Users/guozhiqi-seven/Google Drive/NYU Master/Big Data/project/NYPD_Complaint_Data_Historic.csv")
 
 
 '''
@@ -38,7 +37,7 @@ def CMPLNT_FR_DT_label(time):
 	#return (base_type,semantic_type,validity)
 
 CMPLNT_FR_DT = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[1],CMPLNT_FR_DT_label(x[1])))
-CMPLNT_FR_DT.saveAsTextFile("output.out")
+CMPLNT_FR_DT.saveAsTextFile("CMPLNT_FR_DT_output.out")
 
 
 
@@ -67,7 +66,7 @@ def CMPLNT_FR_TM_label(time):
 
 
 CMPLNT_FR_TM = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[2],CMPLNT_FR_DT_label(x[2])))
-CMPLNT_FR_TM.saveAsTextFile("output.out")
+CMPLNT_FR_TM.saveAsTextFile("CMPLNT_FR_TM_output.out")
 
 
 '''
@@ -100,7 +99,7 @@ def CMPLNT_TO_DT_label(time):
 
 
 CMPLNT_TO_DT = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[3],CMPLNT_TO_DT_label(x[3])))
-CMPLNT_TO_DT.saveAsTextFile("output.out")
+CMPLNT_TO_DT.saveAsTextFile("CMPLNT_TO_DT_output.out")
 
 
 '''
@@ -134,7 +133,7 @@ def CMPLNT_TO_TM_label(time):
 
 
 CMPLNT_TO_TM = crimedata.mapPartitions(lambda x: reader(x)).map(lambda x: (x[4],CMPLNT_TO_TM_label(x[4])))
-CMPLNT_TO_TM.saveAsTextFile("output.out")
+CMPLNT_TO_TM.saveAsTextFile("CMPLNT_TO_TM_output.out")
 
 
 '''
@@ -168,7 +167,7 @@ def RPT_DT_label(time):
 header = crimedata.first() #header
 RPT_DT=crimedata.filter(lambda line: line != header)
 RPT_DT = RPT_DT.mapPartitions(lambda x: reader(x)).map(lambda x: (x[5],CMPLNT_TO_TM_label(x[5])))
-RPT_DT.saveAsTextFile("output.out")
+RPT_DT.saveAsTextFile("RPT_DT_output.out")
 
 
 '''
@@ -198,7 +197,7 @@ def KY_CD_Label(code):
 header = crimedata.first() #header
 KY_CD=crimedata.filter(lambda line: line != header)
 KY_CD = KY_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[6],KY_CD_Label(x[6])))
-KY_CD.saveAsTextFile("output.out")
+KY_CD.saveAsTextFile("KY_CD_output.out")
 
 
 
@@ -226,7 +225,7 @@ def OFNS_DESC_label(text):
 header = crimedata.first() #header
 OFNS_DESC=crimedata.filter(lambda line: line != header)
 OFNS_DESC = OFNS_DESC.mapPartitions(lambda x: reader(x)).map(lambda x: (x[7],OFNS_DESC_label(x[7])))
-OFNS_DESC.saveAsTextFile("output.out")
+OFNS_DESC.saveAsTextFile("OFNS_DESC_output.out")
 
 
 
@@ -259,7 +258,7 @@ def PD_CD_Label(code):
 header = crimedata.first() #header
 PD_CD=crimedata.filter(lambda line: line != header)
 PD_CD = PD_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[8],PD_CD_Label(x[8])))
-PD_CD.saveAsTextFile("output.out")
+PD_CD.saveAsTextFile("PD_CD_output.out")
 
 
 '''
@@ -286,7 +285,7 @@ def PD_DESC_label(text):
 header = crimedata.first() #header
 PD_DESC = crimedata.filter(lambda line: line != header)
 PD_DESC = PD_DESC.mapPartitions(lambda x: reader(x)).map(lambda x: (x[9],PD_DESC_label(x[9])))
-PD_DESC.saveAsTextFile("output.out")
+PD_DESC.saveAsTextFile("PD_DESC_output.out")
 
 
 
@@ -317,7 +316,7 @@ def CRM_ATPT_CPTD_CD_label(indicator):
 header = crimedata.first() #header
 CRM_ATPT_CPTD_CD = crimedata.filter(lambda line: line != header)
 CRM_ATPT_CPTD_CD = CRM_ATPT_CPTD_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[10],CRM_ATPT_CPTD_CD_label(x[10])))
-CRM_ATPT_CPTD_CD.saveAsTextFile("output.out")
+CRM_ATPT_CPTD_CD.saveAsTextFile("CRM_ATPT_CPTD_CD_output.out")
 
 
 '''
@@ -344,7 +343,7 @@ def LAW_CAT_CD_label(level):
 header = crimedata.first() #header
 LAW_CAT_CD = crimedata.filter(lambda line: line != header)
 LAW_CAT_CD = LAW_CAT_CD.mapPartitions(lambda x: reader(x)).map(lambda x: (x[11],LAW_CAT_CD_label(x[11])))
-LAW_CAT_CD.saveAsTextFile("output.out")
+LAW_CAT_CD.saveAsTextFile("LAW_CAT_CD_output.out")
 
 
 '''
@@ -367,7 +366,7 @@ def JURIS_DESC_label(descript):
 header = crimedata.first() #header
 JURIS_DESC = crimedata.filter(lambda line: line != header)
 JURIS_DESC = JURIS_DESC.mapPartitions(lambda x: reader(x)).map(lambda x: (x[12],JURIS_DESC_label(x[12])))
-JURIS_DESC.saveAsTextFile("output.out")
+JURIS_DESC.saveAsTextFile("JURIS_DESC_output.out")
 
 
 '''
@@ -402,4 +401,4 @@ def BORO_NM_label(borough,precinct):
 header = crimedata.first() #header
 BORO_NM = crimedata.filter(lambda line: line != header)
 BORO_NM = BORO_NM.mapPartitions(lambda x: reader(x)).map(lambda x: (x[13],BORO_NM_label(x[13],x[14])))
-BORO_NM.saveAsTextFile("output.out")
+BORO_NM.saveAsTextFile("BORO_NM_output.out")
