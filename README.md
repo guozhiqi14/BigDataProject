@@ -1,8 +1,8 @@
 # BigDataProject
 ___
 ## Term Project for Big Data Course at NYU Center for Data Science
-___
 ### Yanli Zhou, Liwei Song, Zhiqi Guo
+___
 
 Data Used:NYPD Complaint Data Historic
 
