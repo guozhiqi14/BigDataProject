@@ -10,7 +10,7 @@ The dataset used for this project can be downloaded from the NYC Open Data at ht
 
 
 
-
+#### Column data issue output instruction
 #For outputof column 15-23.
 To get output of column 15-23 , please open output_script_liwei_15_23.
 
@@ -46,6 +46,21 @@ For example:
 spark-submit check_semantic.py crime_yc.out
 Then 
 hadoop fs -getmerge check.out check.out
+
+
+####
+Map Reduce Output for plots preparation
+In order to make explorary plot of some columns, we also write some scripts to process different column.
+Open mr_final
+###For column 16-18:
+PREM_TYP_DESC-crime_16.py output:crime_16.out
+PARKS_NM-crime_17.py output:crime_17.out
+HADEVELOPT-crime_18.py output:crime_18.out
+
+To run code:
+spark-submit crime_##.py 
+hadoop fs -getmerge crime_##.out crime_##.out
+
 
 
 
