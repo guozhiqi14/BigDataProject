@@ -66,7 +66,7 @@ hadoop fs -getmerge crime_##.out crime_##.out
 <br>
 To get data column labels(basetype, semantic type and validility) for column 1-15, you should run labelscript.py as follow:   
 
-'''python
+'''Python
 spark-submit labelscript.py NYPD_Complaint_Data_Historic.csv 
 hadoop fs -getmerge [column-name]_output.out [column-name]_output.out 
 '''
