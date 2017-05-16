@@ -82,5 +82,11 @@ All needed data/output for plotting data summary could be find by running **data
 
 ### PartII
 Data Used:NYPD Complaint Data Historic   
-          NYC Subway Dataset http://web.mta.info/nyct/service/
+          NYC Subway Dataset http://web.mta.info/nyct/service/   
+          NNDC Climate Date https://www7.ncdc.noaa.gov/CDO/dataproduct
+          Unemployment Statistics data set  https://data.ny.gov/Economic- Development/Local-Area-Unemployment-Statistics-LAUS-Seasonally/dh9m-5v4d/data   
+          OASAS-Medicaid data Set https://data.ny.gov/Human-Services/OASAS-Medicaid- Trend-Recipient-Summary-Profile-Beg/g4vm-hyyi/data   
+          NYC police preccint data set http://www1.nyc.gov/site/planning/data-maps/open-data/districts-download- metadata.page   
+          NYC borough data set https://geo.nyu.edu/?f%5Bdc_format_s%5D%5B%5D=Shapefile&f%5Bdc_subject_sm %5D%5B%5D=Boroughs&f%5Bdct_spatial_sm%5D%5B%5D=New+York+City%2C+N ew+York%2C+United+States   
+          NYC population open data set https://data.cityofnewyork.us/City-Government/NYC-Population-by-Borough/h2bk- zmw6/data
 
