@@ -8,7 +8,7 @@ Data Used:NYPD Complaint Data Historic
 
 The dataset used for this project can be downloaded from the NYC Open Data at https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Historic/qgea-i56i.
 
-### PartI
+## PartI
 
 #### Column data issue output instruction
 #For outputof column 15-23.   
@@ -80,8 +80,9 @@ hadoop fs -getmerge [column-name]_output.out [column-name]_output.out
 All needed data/output for plotting data summary could be find by running **dataSummary1-9.py**
 
 
-### PartII
-Data Used:NYPD Complaint Data Historic   
+## PartII
+**Data Used**:
+          NYPD Complaint Data Historic   
           NYC Subway Dataset http://web.mta.info/nyct/service/   
           NNDC Climate Date https://www7.ncdc.noaa.gov/CDO/dataproduct
           Unemployment Statistics data set  https://data.ny.gov/Economic- Development/Local-Area-Unemployment-Statistics-LAUS-Seasonally/dh9m-5v4d/data   
