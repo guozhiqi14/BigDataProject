@@ -100,6 +100,10 @@ hadoop fs -getmerge *.out *out
 
 And subtract those two output we can compare two areas' density. The result is statistically significant. 
 
+
+
+___
+<br>
 **Data Used**:
           NYPD Complaint Data Historic   
           NYC Subway Dataset http://web.mta.info/nyct/service/   
