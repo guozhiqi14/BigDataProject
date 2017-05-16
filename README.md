@@ -98,8 +98,12 @@ spark-submit 2circle.py NYPD_Complaint_Data_Historic.csv nysub.csv  *.out
 hadoop fs -getmerge *.out *out   
 ```
 
-And subtract those two output we can compare two areas' density. The result is statistically significant. 
+And subtract those two output we can compare two areas' density. The result is statistically significant.    
 
+<br>
+To calculate the relation between temperature, unemployment and MOSAS recipeints versus. felony.   
+
+PySpark is first used to perform the map reduce job. Defaulted number of mapper and reducers are used because PySpark processes RDD data set. Crime_felony.py is the file, which is used to reduce counts of daily felony happened in Manhattan area. Then, Jupyter notebook file part2.ipynb is used to aggregate weekly, monthly, quarterly and yearly felony counts as well. Then using the same jupyter notebook, we could draw plots of different relationships and calculate coefficients of different relationships. Similar procedure is used to get misdemeanor data with cime_misdemanor.py.
 
 
 ___
