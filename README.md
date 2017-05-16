@@ -82,5 +82,5 @@ All needed data/output for plotting data summary could be find by running **data
 
 ### PartII
 Data Used:NYPD Complaint Data Historic   
-          NYC Subway Dataset [ (http://web.mta.info/nyct/service/)]
+          NYC Subway Dataset http://web.mta.info/nyct/service/
 
