@@ -109,7 +109,7 @@ PySpark is first used to perform the map reduce job. Defaulted number of mapper 
 ___
 <br>
 
-**Data Used**:
+**Data Used**:   
           NYPD Complaint Data Historic   
           NYC Subway Dataset http://web.mta.info/nyct/service/   
           NNDC Climate Date https://www7.ncdc.noaa.gov/CDO/dataproduct
