@@ -103,8 +103,15 @@ To calculate the relation between temperature, unemployment and MOSAS recipeints
 
 PySpark is first used to perform the map reduce job. Defaulted number of mapper and reducers are used because PySpark processes RDD data set. Crime_felony.py is the file, which is used to reduce counts of daily felony happened in Manhattan area.   
 
-Then, Jupyter notebook file part2.ipynb is used to aggregate weekly, monthly, quarterly and yearly felony counts as well. Then using the same jupyter notebook, we could draw plots of different relationships and calculate coefficients of different relationships. Similar procedure is used to get misdemeanor data with cime_misdemanor.py.
+Then, Jupyter notebook file part2.ipynb is used to aggregate weekly, monthly, quarterly and yearly felony counts as well. Then using the same jupyter notebook, we could draw plots of different relationships and calculate coefficients of different relationships. Similar procedure is used to get misdemeanor data with cime_misdemanor.py.   
 
+For example: to run the script   
+```Python
+spark-submit crime_felony.py    
+hadoop fs -getmerge crime_felony.out crime_felony.out
+```
+And other cases are running the similar way.   
+All the script could be found in the repo.
 
 ___
 <br>
