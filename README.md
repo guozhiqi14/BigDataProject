@@ -85,12 +85,14 @@ In part II, the team did analysis bewween crime rate and subway station location
 To join the table of different subway station information and the table of NYC criminal data set. Cartesian join function by PySpark is primarily used. Scircle.py is the file used to perform the joining task and find crimes which occur in inner circle of all subway stations, and 2circle.py is the file used to find the outer circle of all subway stations. 
 
 To run the script and get the statistics for small circle:   
+
 ```Python
 spark-submit scircle.py NYPD_Complaint_Data_Historic.csv nysub.csv  *.out
 hadoop fs -getmerge *.out *out   
 ```
 
 To run the script and get the statistics for docut-shape circle:   
+
 ```Python
 spark-submit 2circle.py NYPD_Complaint_Data_Historic.csv nysub.csv  *.out
 hadoop fs -getmerge *.out *out   
