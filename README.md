@@ -111,7 +111,7 @@ spark-submit crime_felony.py
 hadoop fs -getmerge crime_felony.out crime_felony.out
 ```
 And other cases are running the similar way.   
-All the script could be found in the repo.
+All the used script could be found in the repo.
 
 ___
 <br>
